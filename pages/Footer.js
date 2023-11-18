@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+// import { Link } from 'expo-router';
 const Footer = () => {
   return (
     <View style={styles.footer}>
-      <Link replace href="/NewGoal">
+      {/* <Link replace href="/NewGoal">
         <Pressable>
           <Text style={styles.text}>Criar nova Poupança</Text>
         </Pressable>
-      </Link>
+      </Link> */}
       <Text style={styles.text}>Made by Mauro</Text>
     </View>
   );

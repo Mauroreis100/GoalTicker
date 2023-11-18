@@ -1,10 +1,11 @@
 // AppNavigator.js
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 
-const Stack = createStackNavigator();
+const Stack = createDrawerNavigator();
 
 const AppNavigator = () => {
   return (
