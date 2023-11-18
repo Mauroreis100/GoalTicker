@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+import { Link } from 'expo-router';
 const Footer = () => {
   return (
     <View style={styles.footer}>
+      <Link href="/about">About</Link>
       <Text style={styles.text}>Made by Mauro</Text>
     </View>
   );

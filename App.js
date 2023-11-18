@@ -1,19 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList, Alert, ScrollView } from 'react-native';
-import PressableRectangle from './components/PressableRectangle'; // Assuming your component is in the same directory
-import Footer from './pages/Footer'; // Certifique-se de ajustar o caminho conforme necessário
+import PressableRectangle from './components/PressableRectangle';
+import Footer from './pages/Footer';
+
+
 
 export default function App() {
   const handlePress = () => {
 
   };
   return (
+    // <NavigationContainer>
+    //   <BottomTabNavigator />
+    // </NavigationContainer>
     <View style={styles.container}>
-      <ScrollView>      
-      <StatusBar backgroundColor="lightgreen"
-        barStyle="light-content"
-        style="auto" />
-        <PressableRectangle onPress={handlePress} text="Computador Gamer - 30%" />
+      <ScrollView>
+        <StatusBar backgroundColor="lightgreen"
+          barStyle="light-content"
+          style="auto" />
+
+        <PressableRectangle onPress={handlePress} text="Press" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
@@ -25,10 +31,12 @@ export default function App() {
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
-      </ScrollView>
       
+      </ScrollView>
       <Footer />
+
     </View>
+
   );
 }
 
