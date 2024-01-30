@@ -6,7 +6,7 @@ const PressableRectangle = ({ onPress, text }) => {
     <TouchableOpacity onPress={onPress}>
       <View style={styles.rectangle}>
         <View style={[styles.leftContent]}>
-        <Text style={[styles.text]} >BT-50</Text>  
+        <Text style={[styles.text]} >PC-GAMER</Text>  
         </View>
         <View style={styles.rightContent}>
         <Text style={[styles.progresso]}>55,5%</Text> 

@@ -22,7 +22,7 @@ const DetailsScreen = ({navigation}) => {
       />
       <Text>Meta</Text>
       <TextInput
-        style={{ height: 40 }}
+        style={{ height: 40}}
         placeholder="Valor da Meta"
         onChangeText={newText => setGoalAmount(newText)}
         defaultValue={goalAmount}
@@ -112,6 +112,10 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  inputStyle:{
+    borderWidth: 2,
+    borderColor:"black",
   },
 });
 export default DetailsScreen;

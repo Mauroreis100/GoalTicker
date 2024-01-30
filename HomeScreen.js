@@ -3,6 +3,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, Button, StyleSheet,ScrollView } from 'react-native';
 import PressableRectangle from './components/PressableRectangle';
+import MetaItem from './components/PlanoPoupanca';
 
 const HomeScreen = ({ navigation }) => {
     const handlePress = () => {
@@ -16,17 +17,16 @@ const HomeScreen = ({ navigation }) => {
           style="auto" />
 
         <PressableRectangle onPress={handlePress} text="Press" />
+        <MetaItem/>
+        <PressableRectangle onPress={handlePress} text="Press me!" />
+        <PressableRectangle onPress={handlePress} text="Press me!" />
+        <PressableRectangle onPress={handlePress} text="Press me!" />
+        
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
         <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
-        <PressableRectangle onPress={handlePress} text="Press me!" />
+       
       
       </ScrollView>
       <Button
