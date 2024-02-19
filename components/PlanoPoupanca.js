@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, FlatList } from 'react-native';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import CircularProgress, {
@@ -10,7 +10,7 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 15,
   borderRadius: 10,
- 
+
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
   },
@@ -19,17 +19,17 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
   },
 }));
-const PlanoPoupanca = ({ onPress, text }) => {
+const PlanoPoupanca = ({ onPress, text, percentagem, ultimaEntrada, data, input, setInput }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.rectangle}>
         <View style={[styles.leftContent, styles.title_box]}>
-          <Text style={[styles.title]}>PC Gamer Setup</Text>
-          <Text style={[styles.percentagem]}>30%</Text>
+          <Text style={[styles.title]}>{data?.poupancaName}</Text>
+          <Text style={[styles.percentagem]}>{percentagem}%</Text>
         </View>
 
         <View style={[styles.rightContent, styles.description_box]}>
-          <Text style={[styles.progresso]}>Ultíma Entrada: 500mt</Text>
+          <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
         <Box sx={{ flexGrow: 1 }}>
         <br></br>
           <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
@@ -38,13 +38,38 @@ const PlanoPoupanca = ({ onPress, text }) => {
         </View>
       </View>
 
-    </TouchableOpacity>
-    
+     </TouchableOpacity>
+    // <View style={{ padding: 10 }}>
+    //   <FlatList
+    //     data={data}
+    //     renderItem={({ item }) => {
+    //       if (item?.poupancaName.toLowerCase().includes(input.toLowerCase())) {
+    //         return (
+    //           <View style={styles.rectangle}>
+    //             <View style={[styles.leftContent, styles.title_box]}>
+    //               <Text style={[styles.title]}>{text}</Text>
+    //               <Text style={[styles.percentagem]}>{item?.goal}%</Text>
+    //             </View>
+
+    //             <View style={[styles.rightContent, styles.description_box]}>
+    //               <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
+    //               <Box sx={{ flexGrow: 1 }}>
+    //                 <br></br>
+    //                 <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
+
+    //               </Box>
+    //             </View>
+    //           </View>
+    //         );
+    //       }
+    //     }}
+    //   />
+    // </View>
   );
 };
 
 const styles = StyleSheet.create({
-  
+
   rectangle: {
     flexDirection: 'column',
     width: 365,
@@ -70,9 +95,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 24,
     textAlign: 'center',
-    
+
   },
-  percentagem:{
+  percentagem: {
     fontFamily: 'arial',
     color: 'white',
     fontSize: 54,

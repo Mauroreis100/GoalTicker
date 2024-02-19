@@ -6,11 +6,40 @@ import dayjs from 'dayjs';
 
 const DetailsScreen = ({navigation}) => {
   const [goalName, setGoalName] = useState('');
+  const [goalDescription, setGoalDescription] = useState('');
   const [goalAmount, setGoalAmount] = useState(0);
   const [initialAmount, setInitialAmount] = useState(0);
   const [goalDate_End, setGoalDate_End] = useState(dayjs('0000-12-00').format('DD/MM/YYYY').toString());
   const [monthlyIncome, setMonthlyIncome] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
+
+  const handleRegister = () => {
+    const poupancaData = {
+      poupancaName: goalName,
+      goal: goalAmount,
+      description: goalDescription,
+    };
+
+    axios
+      .post("http://localhost:8000/addPoupanca", poupancaData)
+      .then((response) => {
+        Alert.alert(
+          "Registration Successful",
+          "You have been registered successfully"
+        );
+        setGoalName("");
+        setGoalAmount("");
+        setGoalDescription("");
+      })
+      .catch((error) => {
+        Alert.alert(
+          "Registration Fail",
+          "An error occurred during registration"
+        );
+        console.log("register failed", error);
+      });
+  };
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Nome da nova poupança</Text>
@@ -18,6 +47,7 @@ const DetailsScreen = ({navigation}) => {
         style={{ height: 40 }}
         placeholder="Carro novo..."
         onChangeText={newText => setGoalName(newText)}
+        value={poupancaName}
         defaultValue={goalName}
       />
       <Text>Meta</Text>
@@ -26,6 +56,7 @@ const DetailsScreen = ({navigation}) => {
         placeholder="Valor da Meta"
         onChangeText={newText => setGoalAmount(newText)}
         defaultValue={goalAmount}
+        value={goalAmount}
       />
       <Text>Valor inicial</Text>
       <TextInput
@@ -33,6 +64,14 @@ const DetailsScreen = ({navigation}) => {
         placeholder="-MT"
         onChangeText={newText => setInitialAmount(newText)}
         defaultValue={initialAmount}
+      />
+      <Text>Descrição</Text>
+      <TextInput
+        style={{ height: 40 }}
+        placeholder="Descrição"
+        onChangeText={newText => setGoalDescription(newText)}
+        value={goalDescription}
+        defaultValue={goalDescription}
       />
       <Text>Expectaviva de Término da Poupança</Text>
       <Pressable
@@ -65,7 +104,10 @@ const DetailsScreen = ({navigation}) => {
         </View>
       </Modal>
       <Button
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => {
+          navigation.navigate('Home')
+          handleRegister()
+        }}
         title="Gravar nova poupança" color="#841584"
         accessibilityLabel="Learn more about this purple button" />
     </View >

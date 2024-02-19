@@ -28,11 +28,11 @@ const HomeScreen = ({ navigation }) => {
         <PressableRectangle onPress={handlePress} text="Press me!" />
        
       
-      </ScrollView>
       <Button
         title="Criar nova Poupança"
         onPress={() => navigation.navigate('Details')}
       />
+      </ScrollView>
     </View>
   );
 };
