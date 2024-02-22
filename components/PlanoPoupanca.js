@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, TouchableOpacity, Text, StyleSheet, FlatList } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import CircularProgress, {
@@ -21,55 +21,55 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 const PlanoPoupanca = ({ onPress, text, percentagem, ultimaEntrada, data, input, setInput }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.rectangle}>
-        <View style={[styles.leftContent, styles.title_box]}>
-          <Text style={[styles.title]}>{data?.poupancaName}</Text>
-          <Text style={[styles.percentagem]}>{percentagem}%</Text>
-        </View>
+    // <TouchableOpacity onPress={onPress}>
+    //   <View style={styles.rectangle}>
+    //     <View style={[styles.leftContent, styles.title_box]}>
+    //       <Text style={[styles.title]}>{data?.poupancaName}</Text>
+    //       <Text style={[styles.percentagem]}>{percentagem}%</Text>
+    //     </View>
 
-        <View style={[styles.rightContent, styles.description_box]}>
-          <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
-        <Box sx={{ flexGrow: 1 }}>
-        <br></br>
-          <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
+    //     <View style={[styles.rightContent, styles.description_box]}>
+    //       <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
+    //     <Box sx={{ flexGrow: 1 }}>
+    //     <br></br>
+    //       <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
 
-        </Box>
-        </View>
-      </View>
+    //     </Box>
+    //     </View>
+    //   </View>
 
-     </TouchableOpacity>
-    // <View style={{ padding: 10 }}>
-    //   <FlatList
-    //     data={data}
-    //     renderItem={({ item }) => {
-    //       if (item?.poupancaName.toLowerCase().includes(input.toLowerCase())) {
-    //         return (
-    //           <View style={styles.rectangle}>
-    //             <View style={[styles.leftContent, styles.title_box]}>
-    //               <Text style={[styles.title]}>{text}</Text>
-    //               <Text style={[styles.percentagem]}>{item?.goal}%</Text>
-    //             </View>
+    //  </TouchableOpacity>
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => {
+          return (
+            // <TouchableOpacity onPress={onPress}>
+            <View style={styles.rectangle}>
+              <View style={[styles.leftContent, styles.title_box]}>
+                <Text style={[styles.title]}>{item?.name}</Text>
+                <Text style={[styles.percentagem]}>{item?.goal}</Text>
+              </View>
 
-    //             <View style={[styles.rightContent, styles.description_box]}>
-    //               <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
-    //               <Box sx={{ flexGrow: 1 }}>
-    //                 <br></br>
-    //                 <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
+              <View style={[styles.rightContent, styles.description_box]}>
+                <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
+                <Box sx={{ flexGrow: 1 }}>
+                  <br></br>
+                  <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
 
-    //               </Box>
-    //             </View>
-    //           </View>
-    //         );
-    //       }
-    //     }}
-    //   />
-    // </View>
+                </Box>
+              </View>
+            </View>
+
+            //  </TouchableOpacity>
+          );
+        }}
+      />
+    </View>
+
   );
-};
-
+}
 const styles = StyleSheet.create({
-
   rectangle: {
     flexDirection: 'column',
     width: 365,

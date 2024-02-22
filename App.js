@@ -21,20 +21,20 @@ export default function App() {
     />
   );
   
-    const [poupanca, setPoupanca] = useState([]);
-    useEffect(() => {
-      const fetchEmployeeData = async () => {
-        try {
-          const response = await axios.get("http://localhost:8000/poupanca");
-          setPoupanca(response.data);
-        } catch (error) {
-          console.log("error fetching employee data", error);
-        }
-      };
-      fetchEmployeeData();
-    }, []);
-    console.log(poupanca);
   
+  const [poupanca, setPoupanca] = useState([]);
+  useEffect(() => {
+    const fetchEmployeeData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/poupanca");
+        setPoupanca(response.data);
+      } catch (error) {
+        console.log("error fetching employee data", error);
+      }
+    };
+    fetchEmployeeData();
+  }, []);
+  console.log(poupanca);
   return (
     // <NavigationContainer>
     //   <BottomTabNavigator />
@@ -46,37 +46,30 @@ export default function App() {
           style="auto" />
 
 
- {/* {poupancas.length > 0 ? ( 
+ {/* {poupancas.length > 0 ? 
   //Se o array poupancas for maior que 0 display someting else
-        <SearchResults data={poupancas} input={input} setInput={setInput} />
-      ) : (
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
+        <PlanoPoupanca data={poupancas} />
+       : 
+       
+      }  */}
+{poupanca.length >= 1 ?
+  <MetaItem data={poupanca}></MetaItem> : 
+ <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
           <Text>No Data</Text>
           <Text>Press on the plus button and add your Employee</Text>
-          <Pressable onPress={() => router.push("/(home)/adddetails")}>
-            <AntDesign
-              style={{ marginTop: 30 }}
-              name="pluscircle"
-              size={24}
-              color="black"
-            />
-          </Pressable>
         </View>
-      )}  */}
-
-      <MetaItem text="PC GAMER" percentagem="40%" ultimaEntrada="300"></MetaItem>
+        }
+      {/* <MetaItem text="PC GAMER" percentagem="40%" ultimaEntrada="300"></MetaItem> */}
+      <ColoredLine color="white" />
+      {/* <MetaItem></MetaItem>
       <ColoredLine color="white" />
       <MetaItem></MetaItem>
       <ColoredLine color="white" />
       <MetaItem></MetaItem>
       <ColoredLine color="white" />
-      <MetaItem></MetaItem>
-      <ColoredLine color="white" />
-      <MetaItem></MetaItem>
+      <MetaItem></MetaItem> */}
       <Pressable onPress={poupanca}>
-          <Text>YOOOOO</Text>
+          <Text>{poupanca.length}</Text>
         </Pressable>
         <PressableRectangle onPress={()=>poupanca} text="Press me!" />
       </ScrollView>
