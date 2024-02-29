@@ -4,7 +4,7 @@ import { View, Text, TextInput, Modal, StyleSheet, Pressable, Alert, Button } fr
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 
-const DetailsScreen = ({navigation}) => {
+const DetailsScreen = ({ navigation }) => {
   const [goalName, setGoalName] = useState('');
   const [goalDescription, setGoalDescription] = useState('');
   const [goalAmount, setGoalAmount] = useState(0);
@@ -47,12 +47,12 @@ const DetailsScreen = ({navigation}) => {
         style={{ height: 40 }}
         placeholder="Carro novo..."
         onChangeText={newText => setGoalName(newText)}
-        value={poupancaName}
+        value={goalName}
         defaultValue={goalName}
       />
       <Text>Meta</Text>
       <TextInput
-        style={{ height: 40}}
+        style={{ height: 40 }}
         placeholder="Valor da Meta"
         onChangeText={newText => setGoalAmount(newText)}
         defaultValue={goalAmount}
@@ -103,7 +103,7 @@ const DetailsScreen = ({navigation}) => {
           </View>
         </View>
       </Modal>
-      <Button
+<Button
         onPress={() => {
           navigation.navigate('Home')
           handleRegister()
@@ -155,9 +155,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
-  inputStyle:{
+  inputStyle: {
     borderWidth: 2,
-    borderColor:"black",
+    borderColor: "black",
   },
 });
 export default DetailsScreen;

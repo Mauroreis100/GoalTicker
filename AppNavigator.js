@@ -1,10 +1,12 @@
-// // AppNavigator.js
-// import 'react-native-gesture-handler';
 // import React from 'react';
+
 // import HomeScreen from './HomeScreen';
 // import DetailsScreen from './DetailsScreen';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// // import { createDrawerNavigator } from '@react-navigation/drawer';
 
-// const Stack = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
+// const Stack = createNativeStackNavigator();
 
 // const AppNavigator = () => {
 //   return (

@@ -44,7 +44,7 @@ const PlanoPoupanca = ({ onPress, text, percentagem, ultimaEntrada, data, input,
         data={data}
         renderItem={({ item }) => {
           return (
-            // <TouchableOpacity onPress={onPress}>
+            <TouchableOpacity onPress={onPress}>
             <View style={styles.rectangle}>
               <View style={[styles.leftContent, styles.title_box]}>
                 <Text style={[styles.title]}>{item?.name}</Text>
@@ -61,7 +61,7 @@ const PlanoPoupanca = ({ onPress, text, percentagem, ultimaEntrada, data, input,
               </View>
             </View>
 
-            //  </TouchableOpacity>
+              </TouchableOpacity>
           );
         }}
       />

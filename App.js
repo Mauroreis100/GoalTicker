@@ -1,111 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import axios from 'axios';
-import {useEffect, useState} from "react";
-import { StyleSheet, Text, View, FlatList, Alert, ScrollView,Pressable } from 'react-native';
-import PressableRectangle from './components/PressableRectangle';
-import MetaItem from './components/PlanoPoupanca';
-import Footer from './pages/Footer';
+import React from 'react';
+import { Link } from 'expo-router';
+import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
+import HomeScreen from './HomeScreen';
+import DetailsScreen from './DetailsScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+const Stack = createNativeStackNavigator();
 
-
-export default function App() {
-  const ColoredLine = ({ color }) => (
-    <hr
-        style={{
-            color: color,
-            backgroundColor: color,
-            height: 0.2,
-            width:350,
-            borderRadius: 5,
-        }}
-    />
-  );
-  
-  
-  const [poupanca, setPoupanca] = useState([]);
-  useEffect(() => {
-    const fetchEmployeeData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/poupanca");
-        setPoupanca(response.data);
-      } catch (error) {
-        console.log("error fetching employee data", error);
-      }
-    };
-    fetchEmployeeData();
-  }, []);
-  console.log(poupanca);
+const App = () => {
+ 
   return (
-    // <NavigationContainer>
-    //   <BottomTabNavigator />
-    // </NavigationContainer>
-    <View style={styles.container}>
-      <ScrollView>
-        <StatusBar backgroundColor="lightgreen"
-          barStyle="light-content"
-          style="auto" />
 
-
- {/* {poupancas.length > 0 ? 
-  //Se o array poupancas for maior que 0 display someting else
-        <PlanoPoupanca data={poupancas} />
-       : 
-       
-      }  */}
-{poupanca.length >= 1 ?
-  <MetaItem data={poupanca}></MetaItem> : 
- <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <Text>No Data</Text>
-          <Text>Press on the plus button and add your Employee</Text>
-        </View>
-        }
-      {/* <MetaItem text="PC GAMER" percentagem="40%" ultimaEntrada="300"></MetaItem> */}
-      <ColoredLine color="white" />
-      {/* <MetaItem></MetaItem>
-      <ColoredLine color="white" />
-      <MetaItem></MetaItem>
-      <ColoredLine color="white" />
-      <MetaItem></MetaItem>
-      <ColoredLine color="white" />
-      <MetaItem></MetaItem> */}
-      <Pressable onPress={poupanca}>
-          <Text>{poupanca.length}</Text>
-        </Pressable>
-        <PressableRectangle onPress={()=>poupanca} text="Press me!" />
-      </ScrollView>
-      <Footer />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
 
   );
-}
+};
 
-const styles = StyleSheet.create({
-  navbar: {
-    height: 200
-  },
-  container: {
-    paddingTop: 50,
-    flex: 1,
-    backgroundColor: '#191919',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textoPrimario: {
-    color: 'white',
-  },
-});
-// App.js
-// import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { Text, View, FlatList, Alert, ScrollView } from 'react-native';
-
-// const App = () => {
-//   return (
-//    <View>
-
-//    </View>
-    
-//   );
-// };
-
-// export default App;
+export default App;
