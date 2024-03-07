@@ -11,9 +11,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose
-
-  .connect("mongodb+srv://maurodosreis71:ecom123@poupancas.i1rqj98.mongodb.net/", {
+mongoose.connect("mongodb+srv://maurodosreis71:ecom123@poupancas.i1rqj98.mongodb.net/", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

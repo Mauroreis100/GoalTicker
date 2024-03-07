@@ -19,7 +19,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
   },
 }));
-const PlanoPoupanca = ({ onPress, text, percentagem, ultimaEntrada, data, input, setInput }) => {
+const PlanoPoupanca = ({ onPress, name,goal, percentagem, ultimaEntrada, data, input, setInput }) => {
   return (
     // <TouchableOpacity onPress={onPress}>
     //   <View style={styles.rectangle}>
@@ -40,31 +40,28 @@ const PlanoPoupanca = ({ onPress, text, percentagem, ultimaEntrada, data, input,
 
     //  </TouchableOpacity>
     <View style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity onPress={onPress}>
-            <View style={styles.rectangle}>
-              <View style={[styles.leftContent, styles.title_box]}>
-                <Text style={[styles.title]}>{item?.name}</Text>
-                <Text style={[styles.percentagem]}>{item?.goal}</Text>
-              </View>
 
-              <View style={[styles.rightContent, styles.description_box]}>
-                <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
-                <Box sx={{ flexGrow: 1 }}>
-                  <br></br>
-                  <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.rectangle}>
+          <View style={[styles.leftContent, styles.title_box]}>
+            <Text style={[styles.title]}>{name}</Text>
+            <Text style={[styles.percentagem]}>{goal}</Text>
+          </View>
 
-                </Box>
-              </View>
-            </View>
+          <View style={[styles.rightContent, styles.description_box]}>
+            <Text style={[styles.progresso]}>Ultíma Entrada: {ultimaEntrada}MT</Text>
+            <Box sx={{ flexGrow: 1 }}>
+              <br></br>
+              <BorderLinearProgress valueBuffer={2} color='primary' variant="determinate" value={50} />
 
-              </TouchableOpacity>
-          );
-        }}
-      />
+            </Box>
+          </View>
+        </View>
+
+      </TouchableOpacity>
+
+
+
     </View>
 
   );
