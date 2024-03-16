@@ -15,7 +15,7 @@ function HomeScreen({ navigation }) {
   //       height: 0.2,
   //       width: 350,
   //       borderRadius: 5,
-  //     }}
+  //     }} Qlqr coisinha assim :)
   // );
 
   const [poupanca, setPoupanca] = useState([]);
