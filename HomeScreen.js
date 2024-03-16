@@ -15,7 +15,7 @@ function HomeScreen({ navigation }) {
   //       height: 0.2,
   //       width: 350,
   //       borderRadius: 5,
-  //     }} Qlqr coisinha assim :)
+  //     }} Entra sai pisa
   // );
 
   const [poupanca, setPoupanca] = useState([]);
